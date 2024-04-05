@@ -61,9 +61,9 @@ const getMenuItems = (ss: GoogleAppsScript.Spreadsheet.Spreadsheet) => {
   const data = menu_sheet.getDataRange().getValues();
   const menu_items: any = [];
   for (let i = 1; i < data.length; i++) {
-    const [name, description, image, price, category] = data[i];
+    const [name, description, image, price, category, stock] = data[i];
 
-    if (!name) continue;
+    if (!name || stock == "Out of stock") continue;
 
     const id = Math.random().toString(36).substring(2, 15);
 
